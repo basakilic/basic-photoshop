@@ -1,0 +1,144 @@
+import java.util.Scanner;
+
+public class basicPhotoshop {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int option;
+        do {
+            System.out.println();
+            System.out.println("Please choose an option");
+            System.out.println("2(Clear the picture");
+            System.out.println("3(Color pixel (X,Y) in color C");
+            System.out.println("4(Draw vertical segment");
+            System.out.println("5(Draw horizontal segment");
+            System.out.println("6(Draw filled rectangle in colar C");
+            System.out.println("7(Fills region with color C starting with pixel(X,Y)");
+            System.out.println("8(Exit program");
+            option = input.nextInt();
+        }}
+        while (option < 1 || option > 8);
+        return option;
+    }
+
+
+    public static void intro() {
+        Scanner scn = new Scanner(System.in);
+        int option ;
+        System.out.println("Hello, Welcome to Photoshop program");
+        System.out.println("1(Firstly, please create a picture");
+        System.out.println("Enter width");
+        int width = scn.nextInt();
+        System.out.println("Enter height");
+        int height = scn.nextInt();
+        doublesArray = new char[height][width];
+        InitialValue();
+        print(doublesArray,height,width);
+        option=main();
+        while (option!=8) {
+            if (option==1||option==2||option==3||option==4||option==5||option==6||option==7){
+                switch (option){
+                    case 1:
+                        System.out.println("Enter a value to create new height");
+
+                        System.out.println("Enter a value to create new width ");
+
+                        InitialValue();
+                        print(doublesArray, height, width);
+                        break;
+                    case 2:
+                        doublesArray = new char[height][width];
+                        InitialValue();
+                        print(doublesArray, height, width);
+                        break;
+                    case 3:
+                        System.out.println("Enter X");
+                        int x = scn.nextInt();
+                        System.out.println("Enter Y");
+                        int y = scn.nextInt();
+                        System.out.println("Enter color");
+                        char C = scn.next().charAt(0);
+                        doublesArray[x - 1][y - 1] = C;
+                        print(doublesArray, height, width);
+                        break;
+                    case 4:
+                        System.out.println("Enter X1");
+                        int x1 = scn.nextInt();
+                        System.out.println("Enter X2");
+                        int x2 = scn.nextInt();
+                        System.out.println("Enter Y");
+                        y = scn.nextInt();
+                        System.out.println("Enter color");
+                        C = scn.next().charAt(0);
+                        for (int index = x1; index <= x2; index++) {
+                            doublesArray[index - 1][y - 1] = C;
+                        }
+                        print(doublesArray, height, width);
+                        break;
+                    case 5:
+                        System.out.println("Enter X");
+                        x = scn.nextInt();
+                        System.out.println("Enter Y1");
+                        int y1 = scn.nextInt();
+                        System.out.println("Enter Y2");
+                        int y2 = scn.nextInt();
+                        System.out.println("Enter color");
+                        C = scn.next().charAt(0);
+                        for (int index = y1; index <= y2; index++) {
+                            doublesArray[x - 1][index - 1] = C;
+                        }
+                        print(doublesArray, height, width);
+                        break;
+                    case 6:
+                        System.out.println("Enter X1");
+                        x1 = scn.nextInt();
+                        System.out.println("Enter X2");
+                        x2 = scn.nextInt();
+                        System.out.println("Enter Y1");
+                        y1 = scn.nextInt();
+                        System.out.println("enter Y2");
+                        y2 = scn.nextInt();
+                        System.out.println("Enter color");
+                        C = scn.next().charAt(0);
+                        for (int index1 = x1; index1 <= x2; index1++) {
+                            for (int index2 = y1; index2 <= y2; index2++) {
+                                doublesArray[index1 - 1][index2 - 1] = C;
+                            }
+                        }
+                        print(doublesArray, height, width);
+                        break;
+                    case 7:
+                        System.out.println("Enter X");
+                        x = scn.nextInt();
+                        System.out.println("Enter Y");
+                        y = scn.nextInt();
+                        System.out.println("Enter color");
+                        C = scn.next().charAt(0);
+                        print(doublesArray, height, width);
+                        break;
+                    default:
+                }
+            }
+            option=main();
+        }
+    }
+    public static char[][] doublesArray;
+
+
+    public static void print(char[][] arr,int height, int width) {
+        System.out.println("height: " + height);
+        System.out.println("width= " + width);
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println(" ");
+        }
+    }
+    public static void InitialValue(){
+        for (int index1 = 0; index1 < doublesArray.length; index1++) {
+            for (int index2 = 0; index2 < doublesArray[index1].length; index2++) {
+                doublesArray[index1][index2] = '0';
+            }
+        }
+    }
+}
